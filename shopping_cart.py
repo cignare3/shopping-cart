@@ -2,7 +2,7 @@ import pandas
 import os
 import statistics
 
-from pprint import pprint
+#from pprint import pprint
 
 
 # shopping_cart.py
@@ -32,18 +32,22 @@ products = [
 print("Welcome to Tyler's Grocery Outlet")
 
 total_price = 0
+product_ids = []
 
 while True:
-    Selection_Identifier = input("Please enter a product id number or 'DONE' if there are no more items:")
+    Selection_Identifier = input("Please enter a product id number or 'DONE' if there are no more items: ")
     if Selection_Identifier == "DONE":
         break
     else:
-        matching_products = [id for id in products if str(id["id"]) == str(Selection_Identifier)]
-        matching_product = matching_products[0]
-        total_price = total_price + matching_product["price"]
-        print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
+        product_ids.append(Selection_Identifier)
+        
+#print(product_ids)
 
-
+for Selection_Identifier in product_ids:
+    matching_products = [p for p in products if str(p["id"]) == str(Selection_Identifier)]
+    matching_product = matching_products[0]
+    total_price = total_price + matching_product["price"]
+    print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 print("TOTAL PRICE: " + str(total_price)) #TODO Format as USD
 
@@ -57,20 +61,3 @@ print("TOTAL PRICE: " + str(total_price)) #TODO Format as USD
 #if Selection_Identifier in options:
     
     
-
-
-#def product_filepath(My_csv):
- #   df = pandas.read_csv(My_csv)
-
-#if __name__ == "__main__":
-    #print("PARSING SOME EXAMPLE GRADEBOOK FILES HERE...")
-
-  #  product_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "products.csv")
-   
-
-
-
-#print(products)
-#pprint(products)
-
-#  write some Python code here to produce the desired output
