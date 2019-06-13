@@ -31,6 +31,7 @@ products = [
 
 print("Welcome to Tyler's Grocery Outlet")
 
+total_price = 0
 
 while True:
     Selection_Identifier = input("Please enter a product id number or 'DONE' if there are no more items:")
@@ -39,8 +40,12 @@ while True:
     else:
         matching_products = [id for id in products if str(id["id"]) == str(Selection_Identifier)]
         matching_product = matching_products[0]
+        total_price = total_price + matching_product["price"]
         print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
 
+
+
+print("TOTAL PRICE: " + str(total_price)) #TODO Format as USD
 
 # VALIDATE INPUTS
 #options = range(1,21)
