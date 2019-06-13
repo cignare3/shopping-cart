@@ -3,7 +3,6 @@ import os
 import statistics
 import datetime
 
-#from pprint import pprint
 
 
 # shopping_cart.py
@@ -44,12 +43,14 @@ while True:
         
 #print(product_ids)
 
+
 for Selection_Identifier in product_ids:
     matching_products = [p for p in products if str(p["id"]) == str(Selection_Identifier)]
     matching_product = matching_products[0]
-    total_price = total_price + matching_product["price"]
+    matching_product_price = "${0:,.2f}".format(matching_product["price"])
+    total_price = "${0:,.2f}".format(total_price + matching_product["price"])
+    #total_price = "${0:,.2f}".format(total_prices)
     
-
 print("---------------------")
 print("Tyler's Grocery Outlet")
 print("Website: www.tylersgroceryoutlet.com Phone: 888-123-2345")
@@ -57,9 +58,13 @@ print("---------------------")
 now = datetime.datetime.now()
 print ("Checkout At: " + now.strftime("%Y-%m-%d %I:%M:%S %p"))
 print("---------------------")
-print("Selected Product: ....." + matching_product["name"] + " " + str(matching_product["price"]))
+print("Selected Product: ....." + matching_product["name"] + " " + matching_product_price)
+# + str(matching_product["price"]))
 
 print("TOTAL PRICE: " + str(total_price)) #TODO Format as USD
+
+
+print("Thank you for shopping with us!")
 
 
 #A grocery store name of your choice
