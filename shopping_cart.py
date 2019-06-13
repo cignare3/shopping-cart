@@ -1,11 +1,3 @@
-# shopping-cart
-
-After cloning the repo, navigate there from the command-line:
-
-cd ~/Desktop/shopping-cart
-
-Use your text editor or the command-line to create a file in that repo called "shopping_cart.py", and then place the following contents inside:```
-
 # shopping_cart.py
 
 #from pprint import pprint
@@ -37,10 +29,3 @@ print(products)
 # pprint(products)
 
 # TODO: write some Python code here to produce the desired output
-
-Make sure to save Python files like this whenever you're done editing them. After setting up a virtual environment, we will be ready to run this file.
-
-Create and activate a new Anaconda virtual environment:
-
-conda create -n shopping-env python=3.7 # (first time only)
-conda activate shopping-env
