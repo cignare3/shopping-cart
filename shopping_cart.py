@@ -2,37 +2,10 @@ import pandas
 import os
 import statistics
 
-# shopping_cart.py
-
 from pprint import pprint
 
-print("Welcome to your local grocery store")
 
-user_choice = print("Please enter a product identifier:")
-
-user_choice = int(input())
-#print("USER CHOICE:",user_choice)
-
-# VALIDATE INPUTS
-options = range(1,21)
-
-if user_choice not in options:
-    print("INVALID SELECTION, PLEASE TRY AGAIN...")
-    exit()
-
-if user_choice in options:
-    print(user_choice)
-    
-
-#def product_filepath(My_csv):
- #   df = pandas.read_csv(My_csv)
-
-#if __name__ == "__main__":
-    #print("PARSING SOME EXAMPLE GRADEBOOK FILES HERE...")
-
-  #  product_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "products.csv")
-   
-
+# shopping_cart.py
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -56,7 +29,43 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ]  # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
+print("Welcome to Tyler's Grocery Outlet")
+
+
+while True:
+    Selection_Identifier = input("Please enter a product id number or 'DONE' if there are no more items:")
+    if Selection_Identifier == "DONE":
+        break
+    else:
+        matching_products = [id for id in products if str(id["id"]) == str(Selection_Identifier)]
+        matching_product = matching_products[0]
+        print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
+
+
+# VALIDATE INPUTS
+#options = range(1,21)
+
+#if Selection_Identifier not in options:
+ #   print("INVALID SELECTION, PLEASE TRY AGAIN...")
+  #  exit()
+
+#if Selection_Identifier in options:
+    
+    
+
+
+#def product_filepath(My_csv):
+ #   df = pandas.read_csv(My_csv)
+
+#if __name__ == "__main__":
+    #print("PARSING SOME EXAMPLE GRADEBOOK FILES HERE...")
+
+  #  product_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "products.csv")
+   
+
+
+
 #print(products)
 #pprint(products)
 
-# TODO: write some Python code here to produce the desired output
+#  write some Python code here to produce the desired output
