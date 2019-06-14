@@ -3,9 +3,6 @@ import os
 import statistics
 import datetime
 
-
-
-# shopping_cart.py
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -41,40 +38,38 @@ while True:
     else:
         product_ids.append(Selection_Identifier)
         
-#print(product_ids)
-
 
 for Selection_Identifier in product_ids:
     matching_products = [p for p in products if str(p["id"]) == str(Selection_Identifier)]
     matching_product = matching_products[0]
     matching_product_price = "${0:,.2f}".format(matching_product["price"])
-    total_price = "${0:,.2f}".format(total_price + matching_product["price"])
-    #total_price = "${0:,.2f}".format(total_prices)
+    total_price = total_price + matching_product["price"]
+    tax_amount = total_price * .0875
+    total_amount = total_price + tax_amount
     
-print("---------------------")
+print("--------------------------")
 print("Tyler's Grocery Outlet")
 print("Website: www.tylersgroceryoutlet.com Phone: 888-123-2345")
-print("---------------------")
+print("--------------------------")
 now = datetime.datetime.now()
 print ("Checkout At: " + now.strftime("%Y-%m-%d %I:%M:%S %p"))
-print("---------------------")
+print("--------------------------")
 print("Selected Product: ....." + matching_product["name"] + " " + matching_product_price)
-# + str(matching_product["price"]))
 
-print("TOTAL PRICE: " + str(total_price)) #TODO Format as USD
+
+total_price = "${0:,.2f}".format(total_price)
+print("SUBTOTAL: " + str(total_price)) 
+tax_amount = "${0:,.2f}".format(tax_amount)
+print("TAX: " + str(tax_amount))
+total_amount = "${0:,.2f}".format(total_amount)
+print("TOTAL: " + str(total_amount))
 
 
 print("Thank you for shopping with us!")
 
-
-#A grocery store name of your choice
-#A grocery store phone number and/or website URL and/or address of choice
-#The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2019-06-06 11:31 AM)
-#The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $1.50)
-#The total cost of all shopping cart items, formatted as US dollars and cents (e.g. $4.50), calculated as the sum of their prices
 #The amount of tax owed (e.g. $0.39), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
 #The total amount owed, formatted as US dollars and cents (e.g. $4.89), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
-#A friendly message thanking the customer and/or encouraging the customer to shop again
+
 
 # VALIDATE INPUTS
 #options = range(1,21)
