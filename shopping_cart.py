@@ -30,14 +30,25 @@ print("Welcome to Tyler's Grocery Outlet")
 
 total_price = 0
 product_ids = []
+options = str([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
+
 
 while True:
     Selection_Identifier = input("Please enter a product id number or 'DONE' if there are no more items: ")
     if Selection_Identifier == "DONE":
         break
-    else:
-        product_ids.append(Selection_Identifier)
-        
+    elif Selection_Identifier not in options:
+        print("INVALID SELECTION, PLEASE TRY AGAIN...")
+    else: 
+        product_ids.append(Selection_Identifier)       
+
+print("--------------------------")
+print("Tyler's Grocery Outlet")
+print("Website: www.tylersgroceryoutlet.com Phone: 888-123-2345")
+print("--------------------------")
+now = datetime.datetime.now()
+print ("Checkout At: " + now.strftime("%Y-%m-%d %I:%M:%S %p"))
+print("--------------------------")
 
 for Selection_Identifier in product_ids:
     matching_products = [p for p in products if str(p["id"]) == str(Selection_Identifier)]
@@ -46,16 +57,7 @@ for Selection_Identifier in product_ids:
     total_price = total_price + matching_product["price"]
     tax_amount = total_price * .0875
     total_amount = total_price + tax_amount
-    
-print("--------------------------")
-print("Tyler's Grocery Outlet")
-print("Website: www.tylersgroceryoutlet.com Phone: 888-123-2345")
-print("--------------------------")
-now = datetime.datetime.now()
-print ("Checkout At: " + now.strftime("%Y-%m-%d %I:%M:%S %p"))
-print("--------------------------")
-print("Selected Product: ....." + matching_product["name"] + " " + matching_product_price)
-
+    print("Selected Product: " + matching_product["name"] + " ..... " + matching_product_price)
 
 total_price = "${0:,.2f}".format(total_price)
 print("SUBTOTAL: " + str(total_price)) 
@@ -67,17 +69,6 @@ print("TOTAL: " + str(total_amount))
 
 print("Thank you for shopping with us!")
 
-#The amount of tax owed (e.g. $0.39), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
-#The total amount owed, formatted as US dollars and cents (e.g. $4.89), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
 
-
-# VALIDATE INPUTS
-#options = range(1,21)
-
-#if Selection_Identifier not in options:
- #   print("INVALID SELECTION, PLEASE TRY AGAIN...")
-  #  exit()
-
-#if Selection_Identifier in options:
     
     
