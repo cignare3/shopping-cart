@@ -30,13 +30,14 @@ print("Welcome to Tyler's Grocery Outlet")
 
 total_price = 0
 product_ids = []
-options = str([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
-
+options = str(list(range(1,21)))
 
 while True:
     Selection_Identifier = input("Please enter a product id number or 'DONE' if there are no more items: ")
     if Selection_Identifier == "DONE":
-        break
+        break 
+    elif not Selection_Identifier:
+        print("INVALID SELECTION, PLEASE TRY AGAIN...")
     elif Selection_Identifier not in options:
         print("INVALID SELECTION, PLEASE TRY AGAIN...")
     else: 
@@ -55,7 +56,7 @@ for Selection_Identifier in product_ids:
     matching_product = matching_products[0]
     matching_product_price = "${0:,.2f}".format(matching_product["price"])
     total_price = total_price + matching_product["price"]
-    tax_amount = total_price * .0875
+    tax_amount = total_price * .0875 
     total_amount = total_price + tax_amount
     print("Selected Product: " + matching_product["name"] + " ..... " + matching_product_price)
 
@@ -68,6 +69,7 @@ print("TOTAL: " + str(total_amount))
 
 
 print("Thank you for shopping with us!")
+
 
 
     
